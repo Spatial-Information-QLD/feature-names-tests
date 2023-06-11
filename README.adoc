@@ -1,4 +1,4 @@
-= Feature Naming Tests
+= Feature Names Tests
 
 This repository contains static data, stored queries and application code used to test the _Feature Names_ system established for Queensland Spatial Information (QSI) in 2023.
 
