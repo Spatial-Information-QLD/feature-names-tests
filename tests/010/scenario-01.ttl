@@ -1,0 +1,35 @@
+# Scenario 1
+# Multiple Parcels – 1 Address
+#
+# 1. Suburban House
+# · 3 lots
+# · 1 address
+# EXAMPLE - 1 Allonga Street (462C92812, 490C92815, 491C92812)
+
+PREFIX a: <https://linked.data.gov.au/dataset/gnaf/address/>
+PREFIX addr: <https://w3id.org/profile/anz-address/>
+PREFIX cad: <https://w3id.org/profile/cad/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX actiso: <http://def.isotc211.org/iso19160/-1/2015/Address/code/AddressComponentType/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+# in the address database
+a:GAQLD157826156
+    a addr:Address ;
+    addr:hasGeocode [
+            dcterms:type <https://linked.data.gov.au/dataset/gnaf/code/geocodeType/PC> ;  # Property Centroid
+            geo:asWKT "POINT(153.13036687 -26.77284087)"^^geo:wktLiteral
+        ] ;
+    addr:isAddressFor <http://example.com/property/5ed9d572-f965-48e2-b06a-a8011ffdc3d2> ;
+.
+
+# from the cadastral system
+<http://example.com/property/5ed9d572-f965-48e2-b06a-a8011ffdc3d2>
+    a cad:Property ;
+    rdfs:member
+        <http://example.com/parcel/462C92812> ,
+        <http://example.com/parcel/490C92815> ,
+        <http://example.com/parcel/491C92812> ;
+.

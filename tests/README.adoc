@@ -1,0 +1,29 @@
+= Tests
+
+This directory contains the tests implemented to prove that Queensland Spatial Information (QSI)'s https://linked.data.gov.au/def/addr[_Address Model_] meets the design requirements set for it.
+
+The tests are itemised below and the content for them is stored in folders within this folder named after the test ID.
+
+
+|===
+| ID | Name | Objective | Source | Implementation
+
+| 001 | Multiple Parcels | 2022 CAM project | Demonstrate that the model can cater for an Address for multiple parcels | Static demonstration comparison of 2022 & 2023 model data
+| 002 | Community Management Scheme | 2022 CAM project | Demonstrate that the model can cater for Community Management Schemes | Static demonstration comparison of 2022 & 2023 model data
+| 003 | Urban Multi-Storey Building | 2022 CAM project | | Static demonstration comparison of 2022 & 2023 model data
+| 004 | Complex Site | 2022 CAM project | | Static demonstration comparison of 2022 & 2023 model data
+| 005 | Rural / Remote Property | 2022 CAM project | | Static demonstration comparison of 2022 & 2023 model data
+| 006 | Place Naming within Address | 2022 CAM project | | Static demonstration comparison of 2022 & 2023 model data
+| 007 | Unofficial aliased address | 2022 CAM project | |
+| 008 | Address validation demonstrator | 2022 CAM project | |
+| 009 | Address validation demonstrator 2 | 2022 CAM project | |
+| 010 | Multiple Parcels 2 | 2022 CAM project | | Static demonstration comparison of 2022 & 2023 model data
+| 011 | Community Management Scheme 2 | 2022 CAM project | | Static demonstration comparison of 2022 & 2023 model data
+| 012 | Urban Multi-Storey Building 2 | 2022 CAM project | | Static demonstration comparison of 2022 & 2023 model data
+| 013 | Complex Site 2 | 2022 CAM project | | Static demonstration comparison of 2022 & 2023 model data
+| 014 | Rural / Remote Property 2 | 2022 CAM project | | Static demonstration comparison of 2022 & 2023 model data
+| 015 | Place Naming within Address 3 | 2022 CAM project | | Static demonstration comparison of 2022 & 2023 model data
+| 016 | Remote Community Facility | 2022 CAM project | | Static demonstration comparison of 2022 & 2023 model data
+| 017 | Water address 1 | 2022 CAM project | | Static demonstration comparison of 2022 & 2023 model data
+
+|===

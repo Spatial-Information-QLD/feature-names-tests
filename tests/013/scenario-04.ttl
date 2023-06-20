@@ -1,0 +1,97 @@
+# Scenario 4
+# Complex Site
+#
+# Retirement village
+# · NB gated community would be sub addressed to base address of access point prior to gate with;
+#  i. Capability to capture:
+#   1. Parent site with official address provided by LGA
+#   2. ‘Unofficial’ in-use addresses internally in community – child sites with no easily identified areal extents
+#   3. Overarching ‘property name’ for complex
+#   4. Potential building names
+#   5. >1 road access – alternative address for access points or sub addresses using alternative base address
+#   6. E.G. Halcyon Waters Community, 1 Halcyon Way, Hope Island
+#   7. 274 Roghan Road, Taigum – The Village at Taigum
+# · Ungated should be addressed to internal road network (See universities, shopping centre, hospitals).
+
+PREFIX a: <https://linked.data.gov.au/dataset/gnaf/address/>
+PREFIX addr: <https://w3id.org/profile/anz-address/>
+PREFIX cad: <https://w3id.org/profile/cad/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX actiso: <http://def.isotc211.org/iso19160/-1/2015/Address/code/AddressComponentType/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+# current
+# 1/1 Halcyon Way, Hope Island QLD 4212
+a:GAQLD162432045
+    a addr:Address ;
+    addr:hasAddressComponent
+        [
+            dcterms:type actiso:propertyName ;
+            addr:hasValueText "Halcyon Waters" ;
+            addr:hasValue "Halcyon Waters"
+        ] ;
+    addr:hasGeocode [
+        dcterms:type <https://linked.data.gov.au/dataset/gnaf/code/geocodeType/PC> ;  # Property Centroid
+        geo:asWKT "POINT(153.36514432 -27.88185699)"^^geo:wktLiteral
+    ] ;
+    addr:hasSecondary a:GAQLD162469253 ;
+.
+
+# 90/1 Halcyon Way, Hope Island QLD 4212
+a:GAQLD162469253
+    a addr:Address ;
+    addr:hasAddressComponent
+        [
+            dcterms:type actiso:propertyName ;
+            addr:hasValueText "Halcyon Waters" ;
+            addr:hasValue "Halcyon Waters"
+        ] ;
+    addr:hasGeocode [
+        dcterms:type <https://linked.data.gov.au/dataset/gnaf/code/geocodeType/BC> ;  # Building Centroid
+        geo:asWKT "POINT(153.365127 -27.883232)"^^geo:wktLiteral
+    ] ;
+    addr:hasPrimary a:GAQLD162432045 ;
+.
+
+
+# 274 Roghan Road, Taigum
+a:GAQLD161294216
+    a addr:Address ;
+    addr:hasAddressComponent
+        [
+            dcterms:type actiso:propertyName ;
+            addr:hasValueText "The Village" ;
+            addr:hasValue "The Village"
+        ] ;
+    # addr:hasGeocode [
+    #    dcterms:type <https://linked.data.gov.au/dataset/gnaf/code/geocodeType/PC> ;  # Property Centroid
+    #    geo:asWKT "POINT(153.04544025 -27.3431387)"^^geo:wktLiteral ;  # this not so useful - complex centroid
+    # ] ;
+    addr:hasGeocode [
+        dcterms:type <https://linked.data.gov.au/dataset/gnaf/code/geocodeType/PAP> ;  # Property Access Point
+        geo:asWKT "POINT(153.045546 -27.341745)"^^geo:wktLiteral ;  # this is better
+    ] ;
+    addr:hasSecondary a:GAQLD720181124 ;
+.
+
+# 311/274 Roghan Road, Taigum
+a:GAQLD720181124
+    a addr:Address ;
+    addr:hasAddressComponent
+        [
+            dcterms:type actiso:propertyName ;
+            addr:hasValueText "The Village" ;
+            addr:hasValue "The Village"
+        ] ;
+    # addr:hasGeocode [
+    #    dcterms:type <https://linked.data.gov.au/dataset/gnaf/code/geocodeType/PC> ;  # Property Centroid
+    #    geo:asWKT "POINT(153.04287072 -27.34346988)"^^geo:wktLiteral ;  # this is useful, specific building
+    # ] ;
+    addr:hasGeocode [
+        dcterms:type <https://linked.data.gov.au/dataset/gnaf/code/geocodeType/BC> ;  # Building Centroid
+        geo:asWKT "POINT(153.04287072 -27.34346988)"^^geo:wktLiteral ;  # this is useful, specific building
+    ] ;
+    addr:hasPrimary a:GAQLD161294216 ;
+.

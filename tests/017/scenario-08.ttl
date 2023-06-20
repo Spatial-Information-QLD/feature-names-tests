@@ -1,0 +1,58 @@
+# Scenario 8
+# Water address (See AS/NZS4819:2011, Section 6.5)
+#
+# · Place name for island
+# · Address using water name not road name
+# · Address:
+#  i. Address number:
+#  ii. Water name: Double Island
+#  iii. Locality name: Ellis Beach
+
+PREFIX a: <https://linked.data.gov.au/dataset/gnaf/address/>
+PREFIX addr: <https://w3id.org/profile/anz-address/>
+PREFIX cad: <https://w3id.org/profile/cad/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geocodeType: <https://linked.data.gov.au/dataset/gnaf/code/geocodeType/>
+PREFIX actiso: <http://def.isotc211.org/iso19160/-1/2015/Address/code/AddressComponentType/>
+
+
+# A Single Property - Addressable Object - declared for the whole Conservation Park
+<http://example.com/parcel/23456789>
+    a cad:Parcel ;
+.
+
+# An Address is allocated to the Parcel
+# With as many Address Components as possible and a Geocode
+# Use propertyName for whole Island or any named part
+# Since the Geocode is absolute, AS4189 methods used to generate the Address
+# (seemingly not followed here - no number) are irrelevant
+<http://example.com/double>
+    a addr:Address ;
+    addr:isAddressFor <http://example.com/parcel/23456789> ;
+    addr:hasAddressComponent
+        [
+            dcterms:type actiso:propertyName ;
+            addr:hasValueText "Double Island" ;
+            addr:hasValue "Double Island"
+        ] ,
+        [
+            dcterms:type actiso:locality ;
+            addr:hasValueText "Ellis Beach" ;
+            addr:hasValue <https://linked.data.gov.au/dataset/gnaf/locality/loc9e0bb59f8df8>
+        ] ,
+        [
+            dcterms:type actiso:administrativeArea ;
+            addr:hasValueText "Queensland" ;
+            addr:hasValue <https://linked.data.gov.au/dataset/asgsed3/STE/3>
+        ] ,
+        [
+            dcterms:type actiso:postcode ;
+            addr:hasValueText "4879" ;
+            addr:hasValue 4879
+        ] ;
+    addr:hasGeocode [
+            dcterms:type geocodeType:PC ;  # Property Centroid
+            geo:asWKT "POINT(145.682844 -16.726290)"^^geo:wktLiteral
+        ] ;
+.

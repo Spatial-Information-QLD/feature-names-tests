@@ -1,0 +1,35 @@
+# Oxford Place - invalid QLQ example
+# This file is invalid according to validator.ttl as the file oxford-place-invalid.ttl is however it is additionally
+# invalid according to the file oxford-place-invalid-qld.ttl with its additional requirement of at least two Address
+# Components since this file contains only 1 Address Component for the Address <http://example.com/oxford>.
+
+PREFIX a: <https://linked.data.gov.au/dataset/gnaf/address/>
+PREFIX as:  <https://linked.data.gov.au/dataset/gnaf/addressSite/>
+PREFIX addr: <https://w3id.org/profile/anz-address/>
+PREFIX cad: <https://w3id.org/profile/cad/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX actiso: <http://def.isotc211.org/iso19160/-1/2015/Address/code/AddressComponentType/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+<http://example.com/oxford>
+    a addr:Address ;
+    addr:hasAddressComponent
+        [
+            dcterms:type actiso:numberFirst ;
+            addr:hasValueText "20" ;
+            addr:hasValue 20
+        ] ;
+    addr:hasGeocode [
+            dcterms:type <https://linked.data.gov.au/dataset/gnaf/code/geocodeType/PC> ;  # Property Centroid
+            # geo:asWKT "POINT(153.08468369 -27.32703398)"^^geo:wktLiteral
+        ] ;
+    # addr:isAddressFor as:161162441 ;
+    addr:isAliasOf
+        [
+            dcterms:type <https://linked.data.gov.au/dataset/gnaf/code/addressAliasType/SYN> ;
+            rdf:value a:GAQLD161268186 ;
+        ] ;
+.

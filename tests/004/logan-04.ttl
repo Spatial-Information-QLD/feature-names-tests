@@ -1,0 +1,95 @@
+# Logan 4
+# Complex Site
+#
+
+PREFIX a: <https://linked.data.gov.au/dataset/gnaf/address/>
+PREFIX addr: <https://w3id.org/profile/anz-address/>
+PREFIX cad: <https://w3id.org/profile/cad/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX actiso: <http://def.isotc211.org/iso19160/-1/2015/Address/code/AddressComponentType/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+
+# 8SP213685 - Greenbank Gardens, 1 lot multiple addresses to internal roads
+# Greenbank Gardens, 3651 Mount Lindesay Hwy, Park Ridge QLD 4125
+
+# primary: it has a Complex Name and is the primary, so it's the overall address
+a:GAQLD162713140
+    a addr:Address ;
+    addr:hasAddressComponent
+        [
+            dcterms:type actiso:propertyName ;
+            addr:hasValueText "Greenbank Gardens" ;
+            addr:hasValue "Greenbank Gardens"
+        ] ;
+    addr:isAddressFor <http://example.com/property/8SP213685> ;  # the complex as a whole
+.
+
+# secondary: it has a Complex Name and is a secondary, so it's one of many
+# discernible by its geocode; need not have the same street details as the primary
+a:GAQLD163023823
+    a addr:Address ;
+    addr:hasAddressComponent
+        [
+            dcterms:type actiso:propertyName ;
+            addr:hasValueText "Greenbank Gardens" ;
+            addr:hasValue "Greenbank Gardens"
+        ] ,
+        [
+            dcterms:type actiso:flatNumber ;
+            addr:hasValueText "139" ;
+            addr:hasValue 139
+        ] ;
+    addr:hasPrimary a:GAQLD162713140 ;
+    # addr:isAddressFor ... the individual element within the complex
+.
+
+# River Glen Haven 1 Property Across 2 lot plans with addressing to multiple units on each lot plan.
+# 40SP174298 - 74 Beutel Street Waterford West QLD and
+# 35SP196304 - 30 Beutel Street Waterford West QLD
+
+# A single Addressable Object combining the two Survey Plans can be made
+# The single Address for the main entrance/admin office etc allocated, with a precise Geocode
+# These two addresses are now Secondary addresses and indicate the individual SPs as further Addressable Objects
+# Further Secondary Addresses for the units
+# with Primary Addresses
+<http://example.com/property/5ed9d572-f965-48e2-b06a-a8011ffaaaa>
+    a cad:Property ;
+    rdfs:member
+        <http://example.com/parcel/40SP174298> ,  # GAQLD161808345
+        <http://example.com/parcel/35SP196304> ;  # GAQLD158831217
+.
+
+
+# 2-40 Ingenia Lifestyle Chambers Pines, Koplick Road Chambers Flat
+# 1SP309598 – units to base road address (alternative address 609-667 CHAMBERS FLAT RD CHAMBERS FLAT)
+a:GAQLD159419153
+    a addr:Address ;
+    addr:isAliasOf
+        [
+            # 609-667 CHAMBERS FLAT RD CHAMBERS FLAT
+            dcterms:type <https://linked.data.gov.au/dataset/gnaf/code/addressAliasType/SYN> ;
+            rdf:value a:GAQLD720735932 ;
+        ] ;
+    addr:hasSecondary a:GAQLD720868711 ;
+.
+
+# 296/2-40 Ingenia Lifestyle Chambers Pines, Koplick Road Chambers Flat
+a:GAQLD720868711
+    a addr:Address ;
+    addr:hasPrimary a:GAQLD159419153 ;
+
+.
+
+# 609-667 CHAMBERS FLAT RD CHAMBERS FLAT
+a:GAQLD720735932
+    a addr:Address ;
+    addr:hasAlias
+        [
+            # 2-40 Ingenia Lifestyle Chambers Pines, Koplick Road Chambers Flat
+            dcterms:type <https://linked.data.gov.au/dataset/gnaf/code/addressAliasType/SYN> ;
+            rdf:value a:GAQLD159419153 ;
+        ] ;
+.

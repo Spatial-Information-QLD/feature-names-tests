@@ -1,0 +1,142 @@
+# Scenario 3
+# Urban Multi-Storey Building
+#
+# · Craigston 217 Wickham Terrace, Spring Hill (2RP10197)
+# · Hotel style numbering over multiple floors including basement (unit B01 etc.) current address example;
+#  i. Level type and number: Basement
+#  ii. Address number: Studio 1/217
+#  iii. Road name: 217 Wickham Terrace
+#  iv. Locality name: Spring Hill
+# · Needs to be capable of capturing horizontal and vertical components as coordinates.
+
+# Basement
+# Studio 1/217
+# 217 Wickham Terrace
+# Spring Hill
+# ADDRESS_DETAIL_PID|DATE_CREATED|DATE_LAST_MODIFIED|DATE_RETIRED|BUILDING_NAME|LOT_NUMBER_PREFIX|LOT_NUMBER|LOT_NUMBER_SUFFIX|FLAT_TYPE_CODE|FLAT_NUMBER_PREFIX|FLAT_NUMBER|FLAT_NUMBER_SUFFIX|LEVEL_TYPE_CODE|LEVEL_NUMBER_PREFIX|LEVEL_NUMBER|LEVEL_NUMBER_SUFFIX|NUMBER_FIRST_PREFIX|NUMBER_FIRST|NUMBER_FIRST_SUFFIX|NUMBER_LAST_PREFIX|NUMBER_LAST|NUMBER_LAST_SUFFIX|STREET_LOCALITY_PID|LOCATION_DESCRIPTION|LOCALITY_PID|ALIAS_PRINCIPAL|POSTCODE|PRIVATE_STREET|LEGAL_PARCEL_ID|CONFIDENCE|ADDRESS_SITE_PID|LEVEL_GEOCODED_CODE|PROPERTY_PID|GNAF_PROPERTY_PID|PRIMARY_SECONDARY
+# GAQLD720211887|2021-07-27|2021-08-13||CRAIGSTON||||STU|B|1|||||||217|||||QLD143175||locbf2ab9bc6c4c|A|4000||2/RP10197|0|715596948|7|||S
+
+PREFIX a: <https://linked.data.gov.au/dataset/gnaf/address/>
+PREFIX as: <https://linked.data.gov.au/dataset/gnaf/addressSite/>
+PREFIX addr: <https://w3id.org/profile/anz-address/>
+PREFIX cad: <https://w3id.org/profile/cad/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX actiso: <http://def.isotc211.org/iso19160/-1/2015/Address/code/AddressComponentType/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+# existing
+a:GAQLD720211887
+    a addr:Address ;
+    addr:hasAddressComponent
+        [
+            dcterms:type actiso:buildingName ;
+            addr:hasValueText "Craigston" ;
+            addr:hasValue "Craigston"
+        ] ,
+        [
+            dcterms:type actiso:flatTypeCode ;
+            addr:hasValueText "Studio" ;
+            addr:hasValue <https://linked.data.gov.au/dataset/gnaf/code/flatType/STU>
+        ] ,
+        [
+            dcterms:type actiso:flatNumberPrefix ;
+            addr:hasValueText "B" ;
+            addr:hasValue "B"
+        ] ,
+        [
+            dcterms:type actiso:flatNumber ;
+            addr:hasValueText "1" ;
+            addr:hasValue 1
+        ] ,
+        [
+            dcterms:type actiso:numberFirst ;
+            addr:hasValueText "217" ;
+            addr:hasValue 217
+        ] ,
+        [
+            dcterms:type actiso:streetLocality ;
+            addr:hasValueText "Wickham Terrace" ;
+            addr:hasValue <https://linked.data.gov.au/dataset/gnaf/streetLocality/QLD143175>
+        ] ,
+        [
+            dcterms:type actiso:locality ;
+            addr:hasValueText "Spring Hill" ;
+            addr:hasValue <https://linked.data.gov.au/dataset/gnaf/locality/locbf2ab9bc6c4c>
+        ] ,
+        [
+            dcterms:type actiso:administrativeArea ;
+            addr:hasValueText "Queensland" ;
+            addr:hasValue <https://linked.data.gov.au/dataset/asgsed3/STE/3>
+        ] ,
+        [
+            dcterms:type actiso:postcode ;
+            addr:hasValueText "4000" ;
+            addr:hasValue 4000
+        ] ;
+    addr:hasGeocode [
+            dcterms:type <https://linked.data.gov.au/dataset/gnaf/code/geocodeType/PC> ;  # Property Centroid
+            geo:asWKT "POINT(153.02349765 -27.46531656)"^^geo:wktLiteral
+        ] ;
+    addr:isAddressFor as:715596948 ;
+.
+
+# proposed
+a:GAQLD720211887-proposed
+    a addr:Address ;
+    addr:hasAddressComponent
+        [
+            dcterms:type actiso:buildingName ;
+            addr:hasValueText "Craigston" ;
+            addr:hasValue "Craigston"
+        ] ,
+        # levelTypeCode should be used, not flatNumberPrefix for 'B'
+        # levelTypeCode can be ordered to print before flatTypeCode
+        [
+            dcterms:type actiso:levelTypeCode ;
+            addr:hasValueText "Basement" ;
+            addr:hasValue <https://linked.data.gov.au/dataset/gnaf/code/levelType/B>
+        ] ,
+        [
+            dcterms:type actiso:flatTypeCode ;
+            addr:hasValueText "Studio" ;
+            addr:hasValue <https://linked.data.gov.au/dataset/gnaf/code/flatType/STU>
+        ] ,
+        [
+            dcterms:type actiso:flatNumber ;
+            addr:hasValueText "1" ;
+            addr:hasValue 1
+        ] ,
+        [
+            dcterms:type actiso:numberFirst ;
+            addr:hasValueText "217" ;
+            addr:hasValue 217
+        ] ,
+        [
+            dcterms:type actiso:streetLocality ;
+            addr:hasValueText "Wickham Terrace" ;
+            addr:hasValue <https://linked.data.gov.au/dataset/gnaf/streetLocality/QLD143175>
+        ] ,
+        [
+            dcterms:type actiso:locality ;
+            addr:hasValueText "Spring Hill" ;
+            addr:hasValue <https://linked.data.gov.au/dataset/gnaf/locality/locbf2ab9bc6c4c>
+        ] ,
+        [
+            dcterms:type actiso:administrativeArea ;
+            addr:hasValueText "Queensland" ;
+            addr:hasValue <https://linked.data.gov.au/dataset/asgsed3/STE/3>
+        ] ,
+        [
+            dcterms:type actiso:postcode ;
+            addr:hasValueText "4000" ;
+            addr:hasValue 4000
+        ] ;
+    # Z value added
+    addr:hasGeocode [
+            dcterms:type <https://linked.data.gov.au/dataset/gnaf/code/geocodeType/PC> ;  # Property Centroid
+            geo:asWKT "POINTZ(153.02349765 -27.46531656 -2.5)"^^geo:wktLiteral
+        ] ;
+    addr:isAddressFor as:715596948 ;
+.

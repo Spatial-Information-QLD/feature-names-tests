@@ -1,0 +1,54 @@
+# Scenario 5
+# Rural / Remote Property
+# 
+# 1. Rural Property ("LORNEVALE" 5306SP287760)
+# · 1 property name
+# · Multiple non-contiguous parcels (may be the same lot with disparate parts, or multiple lots)
+# · >1 site
+# · >1 address
+# · Multiple geocodes
+# (22 Sugarloaf Road Westwood)
+# Multiple non-contiguous parcels (may be the same lot with disparate parts, or multiple lots)
+# >1 site
+# >1 address
+# Multiple geocodes
+
+PREFIX a: <https://linked.data.gov.au/dataset/gnaf/address/>
+PREFIX addr: <https://w3id.org/profile/anz-address/>
+PREFIX cad: <https://w3id.org/profile/cad/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX actiso: <http://def.isotc211.org/iso19160/-1/2015/Address/code/AddressComponentType/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+
+# 22 Sugarloaf Road Westwood
+a:GAQLD158836591
+    a addr:Address ;
+    addr:isAddressFor <http://example.com/property/5ed9d572-f965-48e2-b06a-a8011ff12345> ;
+    addr:hasAddressComponent
+        [
+            dcterms:type actiso:propertyName ;
+            addr:hasValueText "Lornevale" ;
+            addr:hasValue "Lornevale"
+        ] ;
+    addr:hasGeocode [
+        dcterms:type <https://linked.data.gov.au/dataset/gnaf/code/geocodeType/PC> ;  # Property Centroid
+        geo:asWKT "POINT(150.15238343 -23.58026583)"^^geo:wktLiteral ;
+    ] ,
+    [
+        dcterms:type <https://linked.data.gov.au/dataset/gnaf/code/geocodeType/DF> ; # Property Access Point
+        geo:asWKT "POINT(150.144797 -23.576749)"^^geo:wktLiteral ;
+    ] ;
+.
+
+
+# from the cadastral system
+<http://example.com/property/5ed9d572-f965-48e2-b06a-a8011ff12345>
+    a cad:Property ;
+    rdfs:member
+        <http://example.com/parcel/462C92811> ,
+        <http://example.com/parcel/490C92812> ,
+        # ...
+        <http://example.com/parcel/491C92813> ;
+.

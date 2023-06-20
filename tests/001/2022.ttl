@@ -1,0 +1,55 @@
+# Logan 1
+# Multiple Parcels – 1 Address
+# 
+# Address: 714 Stockleigh Road Stockleigh QLD. Parcels: 378RP849082, 477W31578
+# &
+# Address: 38 & 40 Augustus Street Kingston. Parcels: 57RP38148 and 57RP38148
+
+PREFIX a: <https://linked.data.gov.au/dataset/gnaf/address/>
+PREFIX as: <https://linked.data.gov.au/dataset/gnaf/addressSite/>
+PREFIX addr: <https://w3id.org/profile/anz-address/>
+PREFIX cad: <https://w3id.org/profile/cad/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX actiso: <http://def.isotc211.org/iso19160/-1/2015/Address/code/AddressComponentType/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+# 714 Stockleigh Road Stockleigh QLD
+a:GAQLD155864743
+    a addr:Address ;
+    addr:isAddressFor <http://example.com/property/5ed9d572-f965-48e2-b06a-a8011ffdabcd> ;
+.
+
+# from the cadastral system
+<http://example.com/property/5ed9d572-f965-48e2-b06a-a8011ffdabcd>
+    a cad:Property ;
+    rdfs:member
+        <http://example.com/parcel/57RP38148> ,
+        <http://example.com/parcel/57RP38148> ;
+.
+
+# 38 - 40 Augustus Street Kingston
+a:GAQLD156735947
+    a addr:Address ;
+    addr:isAddressFor <http://example.com/property/5ed9d572-f965-48e2-b06a-a8011ffd5378> ;
+.
+
+# 38 Augustus Street Kingston
+a:GAQLD158172597
+    a addr:Address ;
+    addr:isAddressFor as:158154046 ;
+.
+
+# 40 Augustus Street Kingston
+<http://example.com/40augustus>
+    a addr:Address ;
+    addr:isAddressFor <http://example.com/property/5ed9d572-f965-48e2-b06a-a8011ffd5378> ;
+.
+
+<http://example.com/property/5ed9d572-f965-48e2-b06a-a8011ffd5378>
+    a cad:Property ;
+    rdfs:member
+        as:156719338 ,
+        as:158154046 ;
+.

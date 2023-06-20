@@ -1,0 +1,86 @@
+# Logan 2
+# Community Management Scheme
+#
+# 2-6 Bourke Street Waterford West QLD, 1-3 Logan Reserve Road Waterford West QLD
+
+PREFIX a: <https://linked.data.gov.au/dataset/gnaf/address/>
+PREFIX addr: <https://w3id.org/profile/anz-address/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX actiso: <http://def.isotc211.org/iso19160/-1/2015/Address/code/AddressComponentType/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+
+# primary
+# 2-6 Bourke Street Waterford West QLD
+a:GAQLD158826402
+    a addr:Address ;
+.
+
+# secondary on same Street Locality
+# 10/2-6 Bourke Street Waterford West QLD
+a:GAQLD720115159
+    a addr:Address ;
+    addr:hasPrimary a:GAQLD158826402 ;
+.
+
+# secondary on alternate Street Locality
+# 14/1-3 Logan Reserve Road Waterford West QLD
+a:GAQLD425865170
+    a addr:Address ;
+    addr:hasPrimary a:GAQLD159419299 ;
+.
+
+a:GAQLD159419299 addr:hasAlias a:GAQLD157309481 .
+
+# missing from 2-6 Bourke Street Waterford West QLD, 1-3 Logan Reserve Road Waterford West QLD and their aliases
+a:GAQLD157309481
+    addr:hasAddressComponent
+        [
+            dcterms:type actiso:propertyName ;
+            addr:hasValueText "Waterford Heights" ;
+            addr:hasValue "Waterford Heights"
+        ] ;
+.
+
+
+
+# primary
+# Springlands Park, 2-8 Springlands Drive, Slacks Creek
+a:GAQLD162861329
+    a addr:Address ;
+.
+
+
+# primary
+# 3727-3729 Pacific Highway Slacks Creek
+a:GAQLD720871566
+    a addr:Address ;
+.
+
+# they are aliased
+a:GAQLD162861329
+    addr:hasAlias
+        [
+            dcterms:type <https://linked.data.gov.au/dataset/gnaf/code/addressAliasType/SYN> ;
+            rdf:value a:GAQLD720871566  ;
+        ] ;
+.
+
+# both already have buildingName, "Springlands Park". Should be propertyName
+a:GAQLD162861329
+    addr:hasAddressComponent
+        [
+            dcterms:type actiso:buildingName ;
+            addr:hasValueText "Springlands Park" ;
+            addr:hasValue "Springlands Park"
+        ] ;
+.
+
+a:GAQLD720871566
+    addr:hasAddressComponent
+        [
+            dcterms:type actiso:buildingName ;
+            addr:hasValueText "Springlands Park" ;
+            addr:hasValue "Springlands Park"
+        ] ;
+.
