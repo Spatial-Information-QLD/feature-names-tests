@@ -1,4 +1,4 @@
-= Feature Naming Tests
+= Feature Names Tests
 
 This repository contains data, scripts and documentation for the testing of the Queensland Spatial Information (QSI) https://linked.data.gov.au/def/addr[_Address Model_].
 
