@@ -5,23 +5,19 @@
 # &
 # Address: 38 & 40 Augustus Street Kingston. Parcels: 57RP38148 and 57RP38148
 
-PREFIX a: <https://linked.data.gov.au/dataset/gnaf/address/>
-PREFIX as: <https://linked.data.gov.au/dataset/gnaf/addressSite/>
-PREFIX addr: <https://w3id.org/profile/anz-address/>
-PREFIX cad: <https://w3id.org/profile/cad/>
-PREFIX dcterms: <http://purl.org/dc/terms/>
-PREFIX geo: <http://www.opengis.net/ont/geosparql#>
-PREFIX actiso: <http://def.isotc211.org/iso19160/-1/2015/Address/code/AddressComponentType/>
+PREFIX a: <https://linked.data.gov.au/dataset/qldaddr/>
+PREFIX addr: <https://linked.data.gov.au/def/addr/>
+PREFIX cad: <https://linked.data.gov.au/def/cad/>
+PREFIX cn: <https://linked.data.gov.au/def/cn/>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
 # 714 Stockleigh Road Stockleigh QLD
 a:GAQLD155864743
     a addr:Address ;
-    addr:isAddressFor <http://example.com/property/5ed9d572-f965-48e2-b06a-a8011ffdabcd> ;
+    cn:isNameFor <http://example.com/property/5ed9d572-f965-48e2-b06a-a8011ffdabcd> ;
 .
 
-# from the cadastral system
+# from SIR
 <http://example.com/property/5ed9d572-f965-48e2-b06a-a8011ffdabcd>
     a cad:Property ;
     rdfs:member
@@ -32,24 +28,24 @@ a:GAQLD155864743
 # 38 - 40 Augustus Street Kingston
 a:GAQLD156735947
     a addr:Address ;
-    addr:isAddressFor <http://example.com/property/5ed9d572-f965-48e2-b06a-a8011ffd5378> ;
-.
-
-# 38 Augustus Street Kingston
-a:GAQLD158172597
-    a addr:Address ;
-    addr:isAddressFor as:158154046 ;
-.
-
-# 40 Augustus Street Kingston
-<http://example.com/40augustus>
-    a addr:Address ;
-    addr:isAddressFor <http://example.com/property/5ed9d572-f965-48e2-b06a-a8011ffd5378> ;
+    cn:isNameFor <http://example.com/property/5ed9d572-f965-48e2-b06a-a8011ffd5378> ;
 .
 
 <http://example.com/property/5ed9d572-f965-48e2-b06a-a8011ffd5378>
     a cad:Property ;
     rdfs:member
-        as:156719338 ,
-        as:158154046 ;
+        <http://example.com/parcel/156719338> ,
+        <http://example.com/parcel/158154046> ;
+.
+
+# 38 Augustus Street Kingston
+a:GAQLD158172597
+    a addr:Address ;
+    cn:isNameFor <http://example.com/parcel/156719338> ;
+.
+
+# 40 Augustus Street Kingston
+<http://example.com/40augustus>
+    a addr:Address ;
+    cn:isNameFor <http://example.com/parcel/158154046> ;
 .

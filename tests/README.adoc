@@ -8,11 +8,11 @@ The tests are itemised below and the content for them is stored in folders withi
 |===
 | ID | Name | Objective | Source | Implementation
 
-| 001 | Multiple Parcels | 2022 CAM project | Demonstrate that the model can cater for an Address for multiple parcels | Static demonstration comparison of 2022 & 2023 model data
-| 002 | Community Management Scheme | 2022 CAM project | Demonstrate that the model can cater for Community Management Schemes | Static demonstration comparison of 2022 & 2023 model data
-| 003 | Urban Multi-Storey Building | 2022 CAM project | | Static demonstration comparison of 2022 & 2023 model data
+| 001 | Multiple Parcels | 2022 CAM project | Demonstrates that the model can cater for an Address for multiple parcels | Static demonstration comparison of 2022 & 2023 model data
+| 002 | Community Management Scheme | 2022 CAM project | Demonstrates that the model can cater for Community Management Schemes | Static demonstration comparison of 2022 & 2023 model data
+| 003 | Urban Multi-Storey Building | 2022 CAM project | Demonstrates use of 2.5D geocodes | Static demonstration comparison of 2022 & 2023 model data
 | 004 | Complex Site | 2022 CAM project | | Static demonstration comparison of 2022 & 2023 model data
-| 005 | Rural / Remote Property | 2022 CAM project | | Static demonstration comparison of 2022 & 2023 model data
+| 005 | Rural / Remote Property | 2022 CAM project | Demonstrates multi-Parcel property modelling | Static demonstration comparison of 2022 & 2023 model data
 | 006 | Place Naming within Address | 2022 CAM project | | Static demonstration comparison of 2022 & 2023 model data
 | 007 | Unofficial aliased address | 2022 CAM project | |
 | 008 | Address validation demonstrator | 2022 CAM project | |

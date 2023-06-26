@@ -1,0 +1,8 @@
+= Multiple Parcels
+
+Demonstrates that the model can cater for an Address for multiple parcels
+
+Static demonstration comparison of 2022 & 2023 model data
+
+* 2022.ttl - how it was done in the 2022 project
+* 2023.ttl - how it is done now

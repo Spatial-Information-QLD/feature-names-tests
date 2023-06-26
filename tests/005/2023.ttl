@@ -1,0 +1,31 @@
+# Logan 5
+# Rural / Remote Property
+# 
+
+PREFIX cad: <https://linked.data.gov.au/def/cad/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+# "Tymbo" Single Property, multiple Parcels
+# 24SP142997, 23SP142997, 25SP142997, 146SL11068, 105SP254145, 169SL11068, 168SL11068, 157SL11068, 299S311316, 104SP254145, 106SP254145, 102SP254145, 156SL11068, 101SP254145, 103SP254145
+
+# A Property is declared (in SIR) as a collection of all the Parcels
+# An Address may be allocated to the Property and its location refined with a Geocode as needed
+<http://example.com/property/5ed9d572-f965-48e2-b06a-a8011ffbbb>
+    a cad:Property ;
+    rdfs:member
+        <http://example.com/parcel/24SP142997> ,
+        <http://example.com/parcel/23SP142997> ,
+        <http://example.com/parcel/25SP142997> ,
+        <http://example.com/parcel/146SL11068> ,
+        <http://example.com/parcel/105SP254145> ,
+        <http://example.com/parcel/169SL11068> ,
+        <http://example.com/parcel/168SL11068> ,
+        <http://example.com/parcel/157SL11068> ,
+        <http://example.com/parcel/299S311316> ,
+        <http://example.com/parcel/104SP254145> ,
+        <http://example.com/parcel/106SP254145> ,
+        <http://example.com/parcel/102SP254145> ,
+        <http://example.com/parcel/156SL11068> ,
+        <http://example.com/parcel/101SP254145> ,
+        <http://example.com/parcel/103SP254145> ;
+.

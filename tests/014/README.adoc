@@ -1,0 +1,6 @@
+= Rural / Remote Property 2
+
+
+
+* 2022.ttl - how it was done in the 2022 project
+* 2023.ttl - how it is done now

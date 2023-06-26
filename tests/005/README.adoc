@@ -1,0 +1,10 @@
+= Rural / Remote Property
+
+Demonstrates multi-Parcel property modelling
+
+The rules for what Parcels may be assembled into a Property reside in the property management system (SIR), not the Feature Naming system.
+
+Static demonstration comparison of 2022 & 2023 model data
+
+* 2022.ttl - how it was done in the 2022 project
+* 2023.ttl - how it is done now

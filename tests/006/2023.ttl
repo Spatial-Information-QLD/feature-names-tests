@@ -1,0 +1,76 @@
+# Logan 6
+# Place Naming within Addressing
+#
+# Daisy Hill Conservation Park, multiple access points (Ford Road, Dennis Road) multiple potential geocodes across multiple lots 28RP173044, 552NPW752, 501SP217936
+
+PREFIX a: <https://linked.data.gov.au/dataset/qldaddr/>
+PREFIX addr: <https://linked.data.gov.au/def/addr/>
+PREFIX apt: <https://linked.data.gov.au/def/addr-part-types/>
+PREFIX cad: <https://linked.data.gov.au/def/cad/>
+PREFIX cn: <https://linked.data.gov.au/def/cn/>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX gn: <https://linked.data.gov.au/def/gn/>
+PREFIX gnpt: <https://linked.data.gov.au/def/gn-part-types>
+PREFIX gt: <https://linked.data.gov.au/def/geocode-types/>
+PREFIX pnc: <https://linked.data.gov.au/def/placenames-categories/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX sdo: <https://schema.org/>
+
+
+# A Single Property - Addressable Object - declared for the whole Conservation Park
+<http://example.com/property/5ed9d572-f965-48e2-b06a-a8011ffbccc>
+    a cad:Property ;
+    rdfs:member
+        <http://example.com/parcel/28RP173044> ,
+        <http://example.com/parcel/552NPW752> ,
+        <http://example.com/parcel/501SP217936> ;
+.
+
+# A Geographical Name is assigned to the Park - same Object as the addresses
+<http://example.com/geographrical-name/x>
+    a gn:GeographicalName ;
+    cn:isNameFor <http://example.com/property/5ed9d572-f965-48e2-b06a-a8011ffbccc> ;
+    sdo:hasPart [
+        sdo:additionalType gnpt:geographicalGivenName ;
+        rdf:value "Daisy Hill Conservation Park" ;
+    ] ,
+    [
+        sdo:additionalType gnpt:geographicalObjectType ;
+        rdf:value pnc:PARK ;
+    ] ;
+.
+
+# An Address for the park is indicated with a Geocode of type Property Access Point
+# to better locate the entrance to the Park.
+# The Address includes the Geographical Name among other Address parts -other part are not shown here
+# 253 Daisy Hill Rd, Daisy Hill QLD 4127
+a:GAQLD155231408
+    a addr:Address ;
+    cn:isNameFor <http://example.com/property/5ed9d572-f965-48e2-b06a-a8011ffbccc> ;
+    sdo:hasPart [
+        sdo:additionalType apt:geographicalName ;
+        rdf:value <http://example.com/geographrical-name/x> ;
+    ] ;
+    addr:hasGeocode [
+        geo:hasGeometry [
+            sdo:additionalType gt:property-access-point ;
+            geo:asWKT "POINT(153.157220 -27.624450)"^^geo:wktLiteral ;
+        ] ;
+    ] ;
+.
+
+# Secondary Addresses, also with Geocodes of type Property Access Point, can be declared, e.g.
+# 859-893 Underwood Rd, Priestdale QLD 4127
+# Doesn't use the Geographical Name
+a:GAQLD161337673
+    a addr:Address ;
+    cn:isNameFor <http://example.com/property/5ed9d572-f965-48e2-b06a-a8011ffbccc> ;
+    addr:hasGeocode [
+        geo:hasGeometry [
+            sdo:additionalType gt:property-access-point ;
+            geo:asWKT "POINT(153.157220 -27.624450)"^^geo:wktLiteral
+        ] ;
+    ] ;
+    addr:hasPrimary a:GAQLD155231408 ;
+.

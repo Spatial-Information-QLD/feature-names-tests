@@ -1,0 +1,47 @@
+# Logan 3
+# Urban Multi-Storey Building
+#
+# 7SP294522 - 26-30 City Road Beenleigh QLD multiple units (but no floor types / unit types).
+
+PREFIX a: <https://linked.data.gov.au/dataset/qldaddr/>
+PREFIX addr: <https://linked.data.gov.au/def/addr/>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX gt: <https://linked.data.gov.au/def/geocode-types/>
+PREFIX sdo: <https://schema.org/>
+
+
+# 26-30 City Road Beenleigh QLD
+a:GAQLD163304422
+    a addr:Address ;
+    addr:hasGeocode [
+        sdo:additionalType gt:property-centroid ;
+        geo:hasGeometry [
+            geo:asWKT "POINT(153.20334252 -27.70994491)"^^geo:wktLiteral
+        ] ;
+    ] ;
+    addr:hasSecondary a:GAQLD719931625 ;
+.
+
+# 20/26-30 City Road Beenleigh QLD
+a:GAQLD719931625
+    a addr:Address ;
+    addr:hasGeocode [
+        sdo:additionalType gt:property-centroid ;
+        geo:hasGeometry [
+            geo:asWKT "POINTZ(153.20362299 -27.71000146 5)"^^geo:wktLiteral ;  # 2nd floor, 2.5 * 2 = 5 (m) z value
+        ] ;
+    ] ;
+    addr:hasPrimary a:GAQLD163304422 ;
+.
+
+# 3/26-30 City Road Beenleigh QLD
+a:GAQLD719930501
+    a addr:Address ;
+    addr:hasGeocode [
+        sdo:additionalType gt:property-centroid ;
+        geo:hasGeometry [
+            geo:asWKT "POINTZ(153.20362299 -27.71000146 0)"^^geo:wktLiteral ;  # ground floor, 0 * 2 = 0 z value
+        ] ;
+    ] ;
+    addr:hasPrimary a:GAQLD163304422 ;
+.
