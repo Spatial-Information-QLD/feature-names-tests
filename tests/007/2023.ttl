@@ -1,0 +1,91 @@
+# Oxford Place
+# A standard suburban address - all address components modelled - with an unofficial aliased
+#
+# 20 Oxford Place Shorncliffe, QLD is an alias of 2/18 Oxford Place Shorncliffe, QLD
+
+# We can tell that the Addresses are aliases since they are both addresses for the same Parcel, ex-parcel:161162441.
+
+# We can tell which address is official (2/18) and which is unofficial (20) based on the Lifecycle Stage.
+
+PREFIX a: <https://linked.data.gov.au/dataset/qldaddr/>
+PREFIX addr: <https://linked.data.gov.au/def/addr/>
+PREFIX apt: <http://linked.data.gov.au/def/address-part-types/>
+PREFIX cn: <https://linked.data.gov.au/def/cn/>
+PREFIX ex: <http://example.com/>
+PREFIX ex-geom: <http://example.com/geometry/>
+PREFIX ex-parcel: <http://example.com/parcel/>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX ls: <https://linked.data.gov.au/def/lifecycle/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX sdo: <https://schema.org/>
+
+<http://example.com/oxford>
+    a addr:Address ;
+    sdo:hasPart
+        [
+            sdo:additionalType apt:numberFirst ;
+            rdf:value 20
+        ] ,
+        [
+            sdo:additionalType apt:streetLocality ;
+            rdf:value <https://linked.data.gov.au/dataset/gnaf/streetLocality/QLD140492> ; # "Oxford Place"
+        ] ,
+        [
+            sdo:additionalType apt:locality ;
+            rdf:value <https://linked.data.gov.au/dataset/gnaf/locality/loc38f189794e03> ;  # "Shorncliffe"
+        ] ,
+        [
+            sdo:additionalType apt:administrativeArea ;
+            rdf:value <https://linked.data.gov.au/dataset/asgsed3/STE/3> ; # "Queensland"
+        ] ,
+        [
+            sdo:additionalType apt:postcode ;
+            rdf:value 4017
+        ] ;
+    addr:hasGeocode [
+        sdo:additionalType <https://linked.data.gov.au/def/geocode-types/property-centroid> ;
+        geo:hasGeometry ex-geom:x
+    ] ;
+    cn:isNameFor ex-parcel:161162441 ;
+    ls:hasLifecycleStage [
+        sdo:additionalType ex:Unofficial ;
+    ] ;
+.
+
+a:GAQLD161268186
+    a addr:Address ;
+    sdo:hasPart
+        [
+            sdo:additionalType apt:flatNumber ;
+            rdf:value "2" ;
+            rdf:value 2
+        ] ,
+        [
+            sdo:additionalType apt:numberFirst ;
+            rdf:value 18
+        ] ,
+        [
+            sdo:additionalType apt:streetLocality ;
+            rdf:value <https://linked.data.gov.au/dataset/gnaf/streetLocality/QLD140492> ; # "Oxford Place"
+        ] ,
+        [
+            sdo:additionalType apt:locality ;
+            rdf:value <https://linked.data.gov.au/dataset/gnaf/locality/loc38f189794e03> ;  # "Shorncliffe"
+        ] ,
+        [
+            sdo:additionalType apt:administrativeArea ;
+            rdf:value <https://linked.data.gov.au/dataset/asgsed3/STE/3> ; # "Queensland"
+        ] ,
+        [
+            sdo:additionalType apt:postcode ;
+            rdf:value 4017
+        ] ;
+    addr:hasGeocode [
+        sdo:additionalType <https://linked.data.gov.au/def/geocode-types/property-centroid> ;
+        geo:hasGeometry ex-geom:x
+    ] ;
+    cn:isNameFor ex-parcel:161162441 ;
+    ls:hasLifecycleStage [
+        sdo:additionalType ex:Official ;
+    ] ;
+.

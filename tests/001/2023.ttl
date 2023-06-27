@@ -4,6 +4,9 @@
 # Address: 714 Stockleigh Road Stockleigh QLD. Parcels: 378RP849082, 477W31578
 # &
 # Address: 38 & 40 Augustus Street Kingston. Parcels: 57RP38148 and 57RP38148
+#
+# Note that the linkage between Property & Parcels is a relationship maintained outside of the
+# Feature Naming DB (in SIR), however the data for a link is provided here for example completeness
 
 PREFIX a: <https://linked.data.gov.au/dataset/qldaddr/>
 PREFIX addr: <https://linked.data.gov.au/def/addr/>

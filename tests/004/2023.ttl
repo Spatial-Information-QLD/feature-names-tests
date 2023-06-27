@@ -3,12 +3,11 @@
 #
 
 PREFIX a: <https://linked.data.gov.au/dataset/qldaddr/>
-PREFIX aat: <https://linked.data.gov.au/def/addr-alias-types/>
 PREFIX addr: <https://linked.data.gov.au/def/addr/>
-PREFIX apt: <https://linked.data.gov.au/def/addr-part-types/>
+PREFIX apt: <http://linked.data.gov.au/def/address-part-types/>
 PREFIX cad: <https://linked.data.gov.au/def/cad/>
 PREFIX cn: <https://linked.data.gov.au/def/cn/>
-PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX ex: <http://example.com/>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX sdo: <https://schema.org/>
@@ -27,8 +26,7 @@ a:GAQLD162713140
     cn:isNameFor <http://example.com/property/8SP213685> ;  # the complex as a whole
 .
 
-# secondary: it has a Complex Name and is a secondary, so it's one of many
-# discernible by its geocode; need not have the same street details as the primary
+# secondary: it has a Complex Name but if for one of many Parcels within the Property. It is discernible by its geocode; need not have the same street details as the primary
 a:GAQLD163023823
     a addr:Address ;
     sdo:hasPart [
@@ -39,50 +37,43 @@ a:GAQLD163023823
         sdo:additionalType apt:flatNumber ;
         rdf:value 139 ;
     ] ;
-    addr:hasPrimary a:GAQLD162713140 ;
-    # cn:isNameFor ... the individual element within the complex
+    # cn:isNameFor ... an individual Parcel within the complex Property
 .
 
 # River Glen Haven 1 Property Across 2 lot plans with addressing to multiple units on each lot plan.
 # 40SP174298 - 74 Beutel Street Waterford West QLD and
 # 35SP196304 - 30 Beutel Street Waterford West QLD
 
-# A single Addressable Object combining the two Parcels can be made
-# The single Address for the main entrance/admin office etc allocated, with a precise Geocode
-# These two addresses are now Secondary addresses and indicate the individual Parcels as further Addressable Objects
-# Further Secondary Addresses for the units with Primary Addresses
-<http://example.com/property/5ed9d572-f965-48e2-b06a-a8011ffaaaa>
-    a cad:Property ;
-    rdfs:member
-        <http://example.com/parcel/40SP174298> ,  # GAQLD161808345
-        <http://example.com/parcel/35SP196304> ;  # GAQLD158831217
-.
-
 
 # 2-40 Ingenia Lifestyle Chambers Pines, Koplick Road Chambers Flat
 # 1SP309598 – units to base road address (alternative address 609-667 CHAMBERS FLAT RD CHAMBERS FLAT)
 a:GAQLD159419153
     a addr:Address ;
-    addr:isAliasOf [
-        # 609-667 CHAMBERS FLAT RD CHAMBERS FLAT
-        sdo:additionalType aat:SYN ;
-        rdf:value a:GAQLD720735932 ;
-    ] ;
-    addr:hasSecondary a:GAQLD720868711 ;
+    cn:isNameFor ex:property-m ;
 .
 
 # 296/2-40 Ingenia Lifestyle Chambers Pines, Koplick Road Chambers Flat
 a:GAQLD720868711
     a addr:Address ;
-    addr:hasPrimary a:GAQLD159419153 ;
+    cn:isNameFor ex:parcel-n ;
 .
 
 # 609-667 CHAMBERS FLAT RD CHAMBERS FLAT
 a:GAQLD720735932
     a addr:Address ;
-    addr:hasAlias [
-        # 2-40 Ingenia Lifestyle Chambers Pines, Koplick Road Chambers Flat
-        sdo:additionalType aat:SYN ;
-        rdf:value a:GAQLD159419153 ;
-    ] ;
+    cn:isNameFor ex:property-m ;
 .
+
+# from SIR
+ex:property-m
+    a cad:Property ;
+    rdfs:member ex:parcel-n ;
+.
+
+ex:parcel-n ;
+    a cad:Parcel ;
+.
+
+# 2-40 Koplick Road & 609-667 Chambers Flat Rd are aliases for each other given that they are both addresses for Property M
+
+# 296/2-40 Koplick Road is related to 2-40 Koplick Road via the fact that the former is an address for a parcel within the property that the latter is an address for

@@ -18,7 +18,7 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX sdo: <https://schema.org/>
 
 
-# A Single Property - Addressable Object - declared for the whole Conservation Park
+# A Single Property - Addressable Object - declared for the whole Conservation Park (in SIR)
 <http://example.com/property/5ed9d572-f965-48e2-b06a-a8011ffbccc>
     a cad:Property ;
     rdfs:member
