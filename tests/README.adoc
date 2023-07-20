@@ -25,5 +25,7 @@ The tests are itemised below and the content for them is stored in folders withi
 | 015 | Place Naming within Address 3 | 2022 CAM project | | Static demonstration comparison of 2022 & 2023 model data
 | 016 | Remote Community Facility | 2022 CAM project | | Static demonstration comparison of 2022 & 2023 model data
 | 017 | Water address 1 | 2022 CAM project | | Static demonstration comparison of 2022 & 2023 model data
+| 18  | Address Count | Count the number of addresses in the source and target databases | Demonstrate the data in the new conceptual model form | Comparison of how many objects were captured in the demonstration of the transformation of the data to the conceptual model form
+| 19  | Parcel Count | Count the number of parcels in the source and target databases | Demonstrate the data in the new conceptual model form | Comparison of how many objects were captured in the demonstration of the transformation of the data to the conceptual model form
 
 |===
