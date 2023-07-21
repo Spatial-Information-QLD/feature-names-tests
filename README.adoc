@@ -4,6 +4,18 @@ This repository contains data, scripts and documentation for the testing of the 
 
 The specific tests, how they work and what they are for, are described in the documentation within the `tests/` folder.
 
+== Running the Validator Tests
+
+Run the tests on your local system by installing https://pypi.org/project/pyshacl/[pySHACL] with https://pypa.github.io/pipx/installation/[pipx].
+
+Once pipx is installed, install pySHACL using the following command.
+
+```
+pipx install pyshacl
+```
+
+Now you can run a validation test in one of the test directories by following the descriptions in the `README` in, for example, link:./tests/020/README.md[tests/020/README.md].
+
 
 == Rights and License
 

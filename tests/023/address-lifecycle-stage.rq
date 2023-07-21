@@ -1,0 +1,36 @@
+# Get the lifecycle stages of an address.
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX lc: <https://linked.data.gov.au/def/lifecycle/>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX time: <http://www.w3.org/2006/time#>
+
+SELECT ?iri ?lifecycleStage ?lifecycleType ?label ?comment ?createdDate ?endedDate ?previousLifecycleStage
+WHERE {
+    BIND(<https://linked.data.gov.au/dataset/qld-addr/addr-33206> AS ?iri)
+
+    ?iri lc:hasLifecycleStage ?lifecycleStage .
+    ?lifecycleStage dcterms:type ?lifecycleType .
+
+    OPTIONAL {
+        ?lifecycleStage rdfs:label ?label
+    }
+    OPTIONAL {
+        ?lifecycleStage rdfs:comment ?comment
+    }
+    OPTIONAL {
+        ?lifecycleStage lc:hasTime ?time .
+        OPTIONAL {
+            ?time time:hasBeginning ?_createdDate .
+            ?_createdDate time:inXSDDate ?createdDate
+        }
+        OPTIONAL {
+            ?time time:hasEnd ?_endedDate .
+            ?_endedDate time:inXSDDate ?endedDate
+        }
+    }
+    OPTIONAL {
+        ?lifecycleStage prov:wasInformedBy ?previousLifecycleStage
+    }
+}

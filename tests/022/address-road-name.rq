@@ -1,0 +1,36 @@
+# Get the address IRIs based on the ?roadType and ?roadNameRegexPattern.
+
+# Note that this form of text search using database regex is highly inefficient.
+# Production solutions may use text indexing solutions, which are database-specific, 
+# but will significantly speed up the query processing time.
+
+PREFIX addr: <https://w3id.org/profile/anz-address/>
+PREFIX cn: <https://linked.data.gov.au/def/cn/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX roads: <https://linked.data.gov.au/def/roads/>
+PREFIX sdo: <https://schema.org/>
+
+SELECT distinct ?iri
+WHERE {
+    BIND("AV (Y)" AS ?roadType)
+    BIND("^spendelove$" AS ?roadNameRegexPattern)
+    
+    ?roadLabel a roads:RoadLabel .
+    ?roadLabel sdo:hasPart [
+        sdo:additionalType <https://linked.data.gov.au/def/roads/ct/RoadType> ;
+        rdf:value ?roadType
+    ] .
+    ?roadLabel sdo:hasPart [
+        sdo:additionalType <https://linked.data.gov.au/def/roads/ct/RoadName> ;
+        rdf:value ?value
+    ] .
+
+    FILTER(REGEX(?value, ?roadNameRegexPattern, "i" ))
+
+    ?roadLabel cn:isNameFor ?roadObject .
+    ?iri a addr:Address .
+    ?iri sdo:hasPart [
+        <https://schema.org/additionalType> <https://w3id.org/profile/anz-address/AnzAddressComponentTypes/streetLocality> ;
+        rdf:value ?roadObject
+    ] .
+}
