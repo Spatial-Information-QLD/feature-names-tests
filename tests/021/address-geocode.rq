@@ -1,0 +1,24 @@
+# Get an address' geocode and all the geocode's properties and values.
+# Note how we have used `BIND` to assign a value to the variable ?iri.
+
+# We have also used the `OPTIONAL` keyword to query for patterns that _MAY_ be in the data.
+# Remember, it's a pattern match, therefore if you remove the use of `OPTIONAL`, it will 
+# match _only_ data that contains `rdfs:label`.
+
+PREFIX addr: <https://w3id.org/profile/anz-address/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+SELECT *
+WHERE {
+    BIND(<https://linked.data.gov.au/dataset/qld-addr/addr-1391537> as ?iri)
+
+    ?iri a addr:Address .
+    OPTIONAL {
+        ?iri rdfs:label ?label .
+    }
+    ?iri addr:hasGeocode ?geocode .
+    
+    ?geocode ?p ?o .
+}
+LIMIT 10

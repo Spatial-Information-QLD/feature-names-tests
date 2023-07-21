@@ -1,0 +1,7 @@
+# Get a count of the number of address instances in the graph.
+
+PREFIX addr: <https://w3id.org/profile/anz-address/>
+SELECT (COUNT(?iri) as ?count)
+WHERE {
+    ?iri a addr:Address .
+}

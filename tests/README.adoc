@@ -25,5 +25,11 @@ The tests are itemised below and the content for them is stored in folders withi
 | 015 | Place Naming within Address 3 | 2022 CAM project | | Static demonstration comparison of 2022 & 2023 model data
 | 016 | Remote Community Facility | 2022 CAM project | | Static demonstration comparison of 2022 & 2023 model data
 | 017 | Water address 1 | 2022 CAM project | | Static demonstration comparison of 2022 & 2023 model data
+| 018 | Address Count | Count the number of addresses in the source and target databases | Demonstrate the data in the new conceptual model form | Comparison of how many objects were captured in the demonstration of the transformation of the data to the conceptual model form
+| 019 | Parcel Count | Count the number of parcels in the source and target databases | Demonstrate the data in the new conceptual model form | Comparison of how many objects were captured in the demonstration of the transformation of the data to the conceptual model form
+| 020 | Address validation of address components | Examples of valid and invalid address data | Snippets of data from the test sandbox | Static data here but the local validator can be used to test the data in the sandbox environment
+| 021 | Get an address' geocode and all the geocode's properties and values | Query example | Demonstration | Run query in database interface
+| 022 | Get the address IRIs based on the road type and road name | Query example | Demonstration | Run query in database interface
+| 023 | Get the lifecycle stages of an address | Query example | Demonstration | Run query in database interface
 
 |===
