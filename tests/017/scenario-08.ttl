@@ -28,13 +28,23 @@ PREFIX schema: <https://schema.org/>
 # Use Water Feature Address Part Type, if it is a registered Water Feature
 # Since the Geocode is absolute, AS4189 methods used to generate the Address
 # (seemingly not followed here - no number) are irrelevant
+#
+#    17 Double Island
+#    Ellis Beach
+#    Queensland 4879
+#    Australia
+#
 <http://example.com/double>
     a addr:Address ;
     addr:isAddressFor <http://example.com/parcel/23456789> ;
     addr:hasAddressComponent
         [
+            schema:additionalType apt:streetNumberFirst ;
+            rdf:value 17 ;  # "17"
+        ] ,
+        [
             schema:additionalType apt:waterFeature ;
-            rdf:value <http://example.com/feature/double-island> ;  # name will appear as Double Island or perhaps Double Isl.
+            rdf:value <http://example.com/feature/double-island> ;  # name will appear as "Double Island" or perhaps "Double Isl."
         ] ,
         [
             schema:additionalType apt:locality ;
@@ -46,7 +56,11 @@ PREFIX schema: <https://schema.org/>
         ] ,
         [
             schema:additionalType apt:postcode ;
-            rdf:value 4879 ;
+            rdf:value 4879 ;  # "4879"
+        ] .
+        [
+            schema:additionalType apt:country ;
+            rdf:value <https://linked.data.gov.au/dataset/asgsed3/AUS/AUS> ;  # Australia
         ] ;
     addr:hasGeocode [
             schema:additionalType geocodeType:PC ;  # Property Centroid
